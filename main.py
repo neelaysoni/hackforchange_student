@@ -3,11 +3,11 @@ import datetime #to display date and time
 import csv   #to use csv files
 import pandas as pd #to use dataframe
 import sys  #to use system exit
-df=pd.read_csv(r"data.csv")
+df=pd.read_csv("data.csv", on_bad_lines='skip')
        
 #SEARCH THE EXISITING ENTRY IN OUR CSV DATABASE
 def login():
-    f=pd.read_csv('data.csv')
+    # f=pd.read_csv('data.csv')
     #taking username and password
     flag = 0
     while(flag == 0):
@@ -25,11 +25,11 @@ def login():
                 a = row[10]
                 b = row[11]
                 if id1 == a and pswd == b:
-                  print("Details For Entered Id and Password is :")
-                  col=f.columns.values
-                  for i in range(len(row)):
-                    print(col[i]+"\t",":", "\t",row[i])
-                    flag = 1
+                   print("Details For Entered Id and Password is :")
+                   col=df.columns.values
+                   for i in range(len(row)):
+                        print(col[i]+"\t",":", "\t",row[i])
+                        flag = 1
           if flag==0:
                 print("!-----Wrong Input-----!")
     print("-----------------------")
@@ -57,16 +57,7 @@ def signup():
     Fname.lower();Mname.lower();Lname.lower()
     Uid=mail[:-10]
     flag = 0
-    Pswddd='daa'
-    
-    while(flag == 1):
-        Pswddd=input("Enter Password: ")
-        CPswddd=input("Re-Enter Password: ")
-        if Pswddd == CPswddd:
-            flag = 1
-            break
-        else:
-            print("Both Password Must Be Same")
+    Pswddd=input("Enter Password: ")
     row1=[Fname,Mname,Lname,DOB,BP,ADD,PIN,MOB,mail,Uname,Uid,Pswddd]
     row=[row1]
     with open('data.csv', 'a') as csvfile:  
@@ -87,13 +78,12 @@ def signup():
 
 #HELPDESK TO GUIDE
 def help():
-    print("Press 1 or Type Login to Log In (With The ID And Password You Have)")
-    print("Press 2 or Type SignUp (Just If Don't Have A Account)")
-    print("Press 3 or Type FPSWD to Change to Password But Needs ID")
-    print("Press 4 or Tpye DEL to Delete Your Current Account But You Will Need ID ,Password And Registered Phone Number Required")
-    print("Press 5 or Type DBASE ")
-    print("Press 6 or Tpye UPDATE to Update Account to make changes BUt ID and Password Required")
-    print("Press 7 And Exit Directly")
+    print("Press 1 to Create New Account")
+    print("Press 2 to Search For Existing Account")
+    print("Press 3 to Delete Exisiting")
+    print("Press 4 to Update Your Account")
+    print("Press 5 to Get Help")
+    print("Press 6 to Exit Directly")
     print("What Do You Want to Do Next : ")
     print("1 : SignIn/Delete/Anything")
     print("2 : Exit")
@@ -160,7 +150,7 @@ def r1(rowstored):
     change(a)
 def update_acc():
     #checking Account Exists Or Not
-    f=pd.read_csv('data.csv')
+    # df=pd.read_csv('data.csv')
     #taking username and password
     flag = 0;slot=0
     while(flag == 0):
@@ -180,7 +170,7 @@ def update_acc():
                 if id1 == a and pswd == b:
                   r1(row)
                   print("Details For Entered Id and Password is :")
-                  col=f.columns.values
+                  col=df.columns.values
                   for i in range(len(row)):
                     print(col[i]+"\t",":", "\t",row[i])
                     flag = 1;slot=1
