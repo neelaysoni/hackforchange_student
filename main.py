@@ -32,10 +32,7 @@ def login():
                     flag = 1
           if flag==0:
                 print("!-----Wrong Input-----!")
-    try:
-        pass
-    except IndexError:
-        print("-----------------------")
+    print("-----------------------")
     print("What Do You Want to Do Next : ")
     print("1 : SignIn/Delete/Anything")
     print("2 : Exit")
@@ -60,6 +57,7 @@ def signup():
     Fname.lower();Mname.lower();Lname.lower()
     Uid=mail[:-10]
     flag = 0
+    Pswddd='daa'
     
     while(flag == 1):
         Pswddd=input("Enter Password: ")
@@ -78,7 +76,7 @@ def signup():
     print("Your Generated User ID is : ",Uid)
     print("Your Entered Password is : ",Pswddd)
     print("THANKS FOR ENTERING YOUR INFO INTO OUR CLI")
-    ("What Do You Want to Do Next : ")
+    print("What Do You Want to Do Next : ")
     print("1 : SignIn/Delete/Anything")
     print("2 : Exit")
     a=int(input("Select 1 or 2 :"))
@@ -90,7 +88,7 @@ def signup():
 #HELPDESK TO GUIDE
 def help():
     print("Press 1 or Type Login to Log In (With The ID And Password You Have)")
-    print("Press 2 or Type Sign Up (Just If Don't Have A Account)")
+    print("Press 2 or Type SignUp (Just If Don't Have A Account)")
     print("Press 3 or Type FPSWD to Change to Password But Needs ID")
     print("Press 4 or Tpye DEL to Delete Your Current Account But You Will Need ID ,Password And Registered Phone Number Required")
     print("Press 5 or Type DBASE ")
@@ -169,7 +167,7 @@ def update_acc():
        with open('data.csv', 'r') as file:
           reader = csv.reader(file)
           print("-----------------------------------------------")
-          print("Welcome to Student ID LOGIN Portal")
+          print("Welcome to Student ID UPDATE Portal")
           x=datetime.datetime.now()
           print("Date\t: ",x.strftime("%x"))
           print("Time\t: ",x.strftime("%X"))
@@ -198,7 +196,7 @@ def delete_acc():
 def menu():
     #flag to choose option
     flag = 0
-    while(flag != 7):
+    while(flag != 6):
         
         #menu printing
         print("MAIN MENU\n")
